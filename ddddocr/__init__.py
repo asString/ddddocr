@@ -46,8 +46,8 @@ class DdddOcr(object):
             print("爬虫框架feapder可快速一键接入，快速开启爬虫之旅：https://github.com/Boris-code/feapder")
             print(
                 "谷歌reCaptcha验证码 / hCaptcha验证码 / funCaptcha验证码商业级识别接口：https://yescaptcha.com/i/NSwk7i")
-        if not hasattr(Image, 'ANTIALIAS'):
-            setattr(Image, 'ANTIALIAS', Image.LANCZOS)
+        if not hasattr(Image, 'LANCZOS'):
+            setattr(Image, 'LANCZOS', Image.LANCZOS)
         self.use_import_onnx = False
         self.__word = False
         self.__resize = []
@@ -2567,16 +2567,16 @@ class DdddOcr(object):
             assert isinstance(img, pathlib.PurePath)
             image = Image.open(img)
         if not self.use_import_onnx:
-            image = image.resize((int(image.size[0] * (64 / image.size[1])), 64), Image.ANTIALIAS).convert('L')
+            image = image.resize((int(image.size[0] * (64 / image.size[1])), 64), Image.LANCZOS).convert('L')
         else:
             if self.__resize[0] == -1:
                 if self.__word:
-                    image = image.resize((self.__resize[1], self.__resize[1]), Image.ANTIALIAS)
+                    image = image.resize((self.__resize[1], self.__resize[1]), Image.LANCZOS)
                 else:
                     image = image.resize((int(image.size[0] * (self.__resize[1] / image.size[1])), self.__resize[1]),
-                                         Image.ANTIALIAS)
+                                         Image.LANCZOS)
             else:
-                image = image.resize((self.__resize[0], self.__resize[1]), Image.ANTIALIAS)
+                image = image.resize((self.__resize[0], self.__resize[1]), Image.LANCZOS)
             if self.__channel == 1:
                 image = image.convert('L')
             else:
