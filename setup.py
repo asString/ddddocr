@@ -19,7 +19,7 @@ setup(
     description="带带弟弟OCR",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/sml2h3/ddddocr",
+    url="https://github.com/asString/ddddocr",
     packages=find_packages(where='.', exclude=(), include=('*',)),
     classifiers=[
         "Programming Language :: Python :: 3 :: Only",
